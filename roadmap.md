@@ -5,3 +5,4 @@
 - [x] Add anchor navigation and company sections.
 - [ ] Add a working enquiry form after the user supplies its destination email.
 - [x] Verify page metadata, mobile and desktop rendering, and the homepage route test.
+- [ ] Rename the Organisations heading and add a direct scroll link in page navigation.
