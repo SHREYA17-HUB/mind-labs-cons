@@ -23,16 +23,23 @@ import {
 
 import { Button } from "@/components/ui/button";
 import collaborationArt from "@/assets/mindlabs-collaboration.png.asset.json";
+import digitalLearningImage from "@/assets/mindlabs-digital-learning.jpg.asset.json";
 import founderPortrait from "@/assets/siddhartha-ray.jpg.asset.json";
 import learningPathArt from "@/assets/mindlabs-learning-path.png.asset.json";
+import learningStrategyImage from "@/assets/mindlabs-learning-strategy.jpg.asset.json";
+import leadershipConversationImage from "@/assets/mindlabs-leadership-conversation.jpg.asset.json";
 import logo from "@/assets/mindlabs-logo.png.asset.json";
 import neuralBrainArt from "@/assets/mindlabs-neural-brain.png.asset.json";
+import peopleInPracticeImage from "@/assets/mindlabs-people-in-practice.jpg.asset.json";
+import salesEffectivenessImage from "@/assets/mindlabs-sales-effectiveness.jpg.asset.json";
 
 const navigation = [
   { label: "Home", href: "#home" },
   { label: "About us", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Expertise", href: "#expertise" },
+  { label: "Organisations", href: "#organisations" },
+  { label: "Gallery", href: "#gallery" },
   { label: "Why MINDLABS", href: "#values" },
   { label: "Contact", href: "#contact" },
 ];
@@ -194,6 +201,39 @@ const organisations = [
   "World Bank",
   "Ernst & Young",
   "Texas Instruments",
+];
+
+const galleryItems = [
+  {
+    image: peopleInPracticeImage.url,
+    category: "Shared learning",
+    title: "People in practice",
+    alt: "Colleagues sharing ideas around a conference table",
+  },
+  {
+    image: learningStrategyImage.url,
+    category: "Learning strategy",
+    title: "Planning for growth",
+    alt: "A professional planning a learning strategy beside a whiteboard",
+  },
+  {
+    image: leadershipConversationImage.url,
+    category: "Leadership",
+    title: "Conversations that move teams forward",
+    alt: "Two colleagues in a focused leadership conversation",
+  },
+  {
+    image: digitalLearningImage.url,
+    category: "Digital learning",
+    title: "New ways to learn at work",
+    alt: "A team member exploring digital learning tools in a modern workplace",
+  },
+  {
+    image: salesEffectivenessImage.url,
+    category: "Sales effectiveness",
+    title: "Making progress visible",
+    alt: "Colleagues reviewing sales performance data together",
+  },
 ];
 
 function SiteHeader() {
@@ -444,6 +484,35 @@ function ApproachSection() {
   );
 }
 
+function GallerySection() {
+  return (
+    <section className="section-shell gallery-section" id="gallery" aria-labelledby="gallery-title">
+      <div className="section-inner">
+        <div className="gallery-heading">
+          <div>
+            <span className="eyebrow"><span className="eyebrow-mark" /> A closer look</span>
+            <h2 className="section-title" id="gallery-title">Learning happens<br /><span>in every conversation.</span></h2>
+          </div>
+          <p>
+            From shared problem-solving to leadership conversations, explore the people-first world of learning and development.
+          </p>
+        </div>
+        <div className="gallery-grid">
+          {galleryItems.map((item, index) => (
+            <figure className={`gallery-card${index === 0 ? " gallery-card-featured" : ""}`} key={item.title}>
+              <img src={item.image} alt={item.alt} loading="lazy" />
+              <figcaption className="gallery-caption">
+                <span>{item.category}</span>
+                <strong>{item.title}</strong>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function ExpertiseSection() {
   return (
     <section className="section-shell expertise-section" id="expertise" aria-labelledby="expertise-title">
@@ -460,8 +529,8 @@ function ExpertiseSection() {
             ))}
           </div>
         </div>
-        <div className="organisation-band">
-          <p>Organisations named in the company profile</p>
+        <div className="organisation-band" id="organisations" aria-labelledby="organisations-title">
+          <h3 id="organisations-title">Organisations</h3>
           <div className="organisation-list">
             {organisations.map((name) => <span key={name}>{name}</span>)}
           </div>
@@ -556,6 +625,7 @@ export default function MindlabsHomepage() {
         <LeadershipSection />
         <ServicesSection />
         <ApproachSection />
+        <GallerySection />
         <ExpertiseSection />
         <ValuesSection />
         <ContactSection />
